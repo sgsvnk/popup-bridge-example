@@ -14,6 +14,8 @@ function click() {
   console.log('click!');
 
   if (isPopupBridge()) {
+    alert("popup bridge available");
+    
     var href = window.location.href;
     url = href.substring(0, href.lastIndexOf("/")) + '/this_launches_in_popup.html' +
       '?popupBridgeReturnUrlPrefix=' + window.popupBridge.getReturnUrlPrefix();
@@ -21,6 +23,7 @@ function click() {
     window.popupBridge.open(url);
 
   } else {
+    alert("popup bridge not available");
     var popup = window.open("this_launches_in_popup.html", "DescriptiveWindowName", "resizable,scrollbars,status,height=400px,width=400px");
 
     window.addEventListener('message', function (event) {
